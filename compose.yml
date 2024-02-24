@@ -1,15 +1,5 @@
 version: '3.8'
 services:
-
-    www:
-        container_name: mailer-dev
-        build: .
-        volumes:
-            - ./docker/vhosts:/etc/apache2/sites-enabled
-            - ./:/var/www
-        ports:
-            - "8000:80"
-
     database:
         container_name: mailer-database-dev
         image: mysql:latest
