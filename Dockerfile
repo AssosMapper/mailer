@@ -16,6 +16,8 @@ RUN docker-php-ext-configure intl
 RUN docker-php-ext-install pdo pdo_mysql opcache intl zip calendar dom mbstring exif gd xsl
 RUN pecl install apcu && docker-php-ext-enable apcu
 WORKDIR /var/www
+COPY storage .
+COPY bootstrap .
 RUN chown -R www-data:www-data storage bootstrap/cache
 
 RUN usermod -u ${USER_ID:-1000} www-data
