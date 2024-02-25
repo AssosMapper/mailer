@@ -12,5 +12,5 @@ npm run dev
 docker compose up
 ```
 ```bash
-docker exec -it website-dev bash
+docker exec -it mailer-dev bash
 ```

@@ -1,5 +1,14 @@
 version: '3.8'
 services:
+    php:
+      build: .
+      container_name: mailer-dev
+      ports:
+        - "8000:8000"
+      volumes:
+          - .:/var/www
+      command: ["php","artisan","serve","--host=0.0.0.0"]
+
     database:
         container_name: mailer-database-dev
         image: mysql:latest
