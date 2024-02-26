@@ -33,12 +33,20 @@ class PostalLetterResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->label('Slug')
                     ->required(),
+                Forms\Components\Textarea::make('description')
+                    ->label('Description')
+                    ->nullable(),
                 Forms\Components\Select::make('category_id')
                     ->label('Category')
-                    ->relationship('category', 'name')
+                    //only show categories that are published
+                    ->options(
+                        fn () => \App\Models\PostalLetterCategory::query()
+                            ->where('is_published', true)
+                            ->get()
+                            ->mapWithKeys(fn ($category) => [$category->id => $category->name])
+                    )
                     ->searchable()
-                    ->required()
-                    ->columnSpanFull(),
+                    ->required(),
                 Forms\Components\Toggle::make('is_published')
                     ->label('Published'),
                 Forms\Components\RichEditor::make('content')

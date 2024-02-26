@@ -10,6 +10,7 @@ class PostalLetter extends Model
     protected $fillable = [
         'title',
         'slug',
+        'description',
         'content',
         'category_id',
         'is_published',

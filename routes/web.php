@@ -13,4 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', \App\Livewire\HomePage::class);
+Route::get('/', \App\Livewire\HomePage::class)->name('home');
+Route::prefix('letters')->group(function () {
+    Route::get('/', \App\Livewire\LettersList::class)->name('letters.list');
+});

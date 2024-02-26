@@ -28,8 +28,8 @@ class PostalLetterCategoryResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')->label('Name')->required(),
                 Forms\Components\TextInput::make('slug')->label('Slug')->required(),
-                Forms\Components\Textarea::make('description')->label('Description')->required(),
-                Forms\Components\Checkbox::make('is_published')->label('Is Published')->required(),
+                Forms\Components\Textarea::make('description')->label('Description'),
+                Forms\Components\Toggle::make('is_published')->label('Is Published'),
             ]);
     }
 
