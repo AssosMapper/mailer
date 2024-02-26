@@ -13,13 +13,20 @@ return new class extends Migration
     {
         Schema::create('personalities', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('full_name');
             $table->string('profession');
-            $table->string('email')->unique();
-            $table->string('phone')->unique();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('additionalPhone')->nullable();
             $table->string("fax")->nullable();
-            $table->string('full_address');
+            $table->string("additionalFax")->nullable();
+            $table->string('full_address')->nullable();
+            $table->string('additionalAddress')->nullable();
+            $table->string('departmentName')->nullable();
+            $table->string('departmentNumber')->nullable();
+            $table->string('party')->nullable();
+            $table->integer('constituency')->nullable();
+            $table->json('urls')->nullable();
             $table->timestamps();
         });
     }
