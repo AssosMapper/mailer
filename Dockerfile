@@ -1,4 +1,4 @@
-FROM php:8.3
+FROM php:8.2
 
 RUN apt-get update && apt-get install -y \
         libzip-dev \
@@ -13,6 +13,13 @@ RUN apt-get update && apt-get install -y \
         pdo_mysql \
         zip \
         intl
+
+RUN apt-get update && apt-get install -y \
+        libpng-dev \
+        libjpeg-dev \
+        libfreetype6-dev \
+    && docker-php-ext-configure gd --with-jpeg --with-freetype \
+    && docker-php-ext-install -j$(nproc) gd
 
 RUN docker-php-ext-install opcache \
     && pecl install apcu \
